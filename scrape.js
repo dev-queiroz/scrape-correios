@@ -11,7 +11,14 @@ async function scrapeCorreios(cep) {
     
     await page.waitForSelector('.ctrlcontent');
 
-    // falta apenas realizar a extração de info.
+    const result = await page.evaluate(() => {
+        const data = {};
+        data.logradouro = document.querySelector('.ctrlcontent .logradouro').innerText;
+        data.bairro = document.querySelector('.ctrlcontent .bairro').innerText;
+        data.localidade = document.querySelector('.ctrlcontent .localidade').innerText;
+        data.uf = document.querySelector('.ctrlcontent .uf').innerText;
+        return data;
+    });
     
     await browser.close();
     return result;
