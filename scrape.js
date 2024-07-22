@@ -24,5 +24,4 @@ async function scrapeCorreios(cep) {
     return result;
 }
 
-// Testar a função
 scrapeCorreios('01001000').then(console.log).catch(console.error);
